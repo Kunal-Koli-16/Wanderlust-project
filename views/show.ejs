@@ -1,0 +1,37 @@
+<% layout("/layouts/boilerplate") %>
+  <body>
+    <div class="row mt-3">
+      <div class="col-8 offset-3">
+    <h3><%= listing.title %></h3>
+  </div>
+    <div class="card col-6 offset-3 show-cards">
+      <img class="card-img-top show-img" src="<%= listing.image %>" alt="Listing image">
+      <div class="card-body mt-2">
+        <p class="card-text"> <i>Owned by : <b><%= listing.owner.username %></i></b></p>
+        <p><i>Description : <b><%= listing.description %></b> </i></p>
+        <p><i>Price : </i><b> &#8377; <%= listing.price.toLocaleString("en-IN")%> </b></p>  
+          <!-- if we give undifined price then we get an error because localedtring needs proper price -->
+           <p> <i>Location : </i><b><%= listing.location %> </b></p>
+           <p> <i>Country : </i><b><%= listing.country %></b></p>
+          
+      </div>
+    </div>
+   
+    <br />
+  
+</div>
+ 
+<div class="btns">
+  <a href="/listings/<%= listing._id %>/edit " class="btn btn-dark col-1 offset-3 add-btn mb-3">Edit</a>
+
+  <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+    <button class="btn btn-dark offset-4">Delete</button>
+  </form>
+</div>
+
+
+
+  </body>
+
+
+
